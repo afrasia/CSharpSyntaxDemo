@@ -9,10 +9,10 @@ namespace CSharpSyntaxDemo
         /// <summary>
         /// Property Example 1
         /// </summary>
-        public static string[] Words = new string[] { "This" , "is", "a", "test", "of", "the", "emergency", "broadcast", "system." };
+        public static string[] Words = new string[] { "This", "is", "a", "test", "of", "the", "emergency", "broadcast", "system." };
 
         public static IList<string> WordsList = Words.ToList();
-       
+
 
         public static object[] HeterogenousArray = new object[] { 1, "a" };
 
@@ -54,10 +54,10 @@ namespace CSharpSyntaxDemo
 
             // for loop
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("For loop");            
+            Console.WriteLine("For loop");
             Console.ForegroundColor = ConsoleColor.White;
 
-            for (int i = 0; i<Words.Length; i++)
+            for (int i = 0; i < Words.Length; i++)
             {
                 Console.WriteLine(Words[i]);
             }
@@ -73,7 +73,7 @@ namespace CSharpSyntaxDemo
                 {
                     Console.WriteLine(Words[i]);
                 }
-                
+
 
                 var wordToWrite = (Words[i].Contains("e")) ? Words[i] : "Not a match";
 
@@ -114,16 +114,16 @@ namespace CSharpSyntaxDemo
                     default:
                         // no need to do anything;
                         break;
-                  
+
                 }
-                
+
                 n++;
             }
             while (n < 100);
 
-            while(n < 200)
+            while (n < 200)
             {
-                n++;                                
+                n++;
             }
 
             // methods
@@ -142,7 +142,7 @@ namespace CSharpSyntaxDemo
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Classes");
             Console.ForegroundColor = ConsoleColor.White;
-            
+
             var person2 = new Person("Steve", "Smith");
             Console.WriteLine(person2.FullName);
             var helloStatement = person2.SayHello();
@@ -150,8 +150,8 @@ namespace CSharpSyntaxDemo
 
             var person3 = new Person
             {
-                FirstName="amir",
-                LastName="rad"
+                FirstName = "amir",
+                LastName = "rad"
             };
 
             Console.WriteLine(person3.FullName);
@@ -160,7 +160,7 @@ namespace CSharpSyntaxDemo
 
             try
             {
-                Person person = null;
+                Person? person = null;
                 helloStatement = person.SayHello();
             }
             catch (Exception ex)
@@ -177,7 +177,7 @@ namespace CSharpSyntaxDemo
             {
                 // null conditional operator
                 // this statement helloStatement = person?.SayHello(); will only call SayHello() if person is not null
-                Person person = null;
+                Person? person = null;
                 helloStatement = person?.SayHello();
             }
             catch (Exception ex)
@@ -213,10 +213,10 @@ namespace CSharpSyntaxDemo
             Console.WriteLine(sp.Age);
             Console.WriteLine(sd.Age);
 
-            StructPerson sp2 = new StructPerson("a","b");
+            StructPerson sp2 = new StructPerson("a", "b");
             Console.WriteLine(sp2.FirstName);
-            
-            Console.WriteLine(string.Join("," , WordsList));
+
+            Console.WriteLine(string.Join(",", WordsList));
 
             AddWord(WordsList);
 
@@ -362,7 +362,7 @@ namespace CSharpSyntaxDemo
         }
 
 
-        public static string MethodWithFuncParameter(Func<string,string> fun)
+        public static string MethodWithFuncParameter(Func<string, string> fun)
         {
             return fun("testing");
         }
@@ -373,7 +373,7 @@ namespace CSharpSyntaxDemo
             return p.FirstName;
         }
 
-        public static string PlayWithStructs(StructPerson p) 
+        public static string PlayWithStructs(StructPerson p)
         {
             p.Age = 100;
             return p.FirstName;
@@ -411,13 +411,13 @@ namespace CSharpSyntaxDemo
 
             var selectWithCompoundedLogic = (from w in Words where w.Contains("e") && w.Length > 4 select w).ToList();
             WriteWords(selectWithCompoundedLogic);
-                      
+
             var selectWithLogicAndOrderBy = (from w in Words where w.Contains("e") orderby w select w).ToList();
             WriteWords(selectWithLogicAndOrderBy);
 
             // notice we are only selecting the Lenght property of the Words
             var selectPropertiesOfTheObjectsBeingQueried = (from w in Words where w.Contains("e") && w.Length > 4 select w.Length).ToList();
-            foreach(var result in selectPropertiesOfTheObjectsBeingQueried)
+            foreach (var result in selectPropertiesOfTheObjectsBeingQueried)
             {
                 Console.WriteLine(result);
             }
@@ -462,15 +462,16 @@ namespace CSharpSyntaxDemo
             var selectWithLogicAndOrderBy = Words.Where(w => w.Contains("e")).OrderBy(w => w).ToList();
             WriteWords(selectWithLogicAndOrderBy);
 
-            
+
             // notice we are only selecting the Lenght property of the Words
-            var selectPropertiesOfTheObjectsBeingQueried = Words.Where(w => {
-                return w.Contains("e") && w.Length > 4; 
+            var selectPropertiesOfTheObjectsBeingQueried = Words.Where(w =>
+            {
+                return w.Contains("e") && w.Length > 4;
             }).Select(w => w.Length).ToList();
-            
-            
-            
-            
+
+
+
+
             foreach (var result in selectPropertiesOfTheObjectsBeingQueried)
             {
                 Console.WriteLine(result);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CSharpSyntaxDemo
 {
-    struct StructPerson
+    internal struct StructPerson
     {
         /// <summary>
         /// Property backer

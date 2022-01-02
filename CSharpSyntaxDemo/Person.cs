@@ -1,6 +1,12 @@
-﻿namespace CSharpSyntaxDemo
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CSharpSyntaxDemo
 {
-    class Person
+    internal class Person
     {
         /// <summary>
         /// Property backer

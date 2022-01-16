@@ -36,7 +36,7 @@ namespace CSharpSyntaxDemo
             Console.WriteLine(m.CompareTo(n));
             Console.WriteLine(true);
 
-            Person newperson = new Person();
+            Person newperson = new();
             Console.WriteLine(newperson);
 
             // bad variable name -> var if = 1;
@@ -75,7 +75,7 @@ namespace CSharpSyntaxDemo
                 }
 
 
-                var wordToWrite = (Words[i].Contains("e")) ? Words[i] : "Not a match";
+                var wordToWrite = (Words[i].Contains('e')) ? Words[i] : "Not a match";
 
                 Console.WriteLine(wordToWrite);
             }
@@ -193,7 +193,7 @@ namespace CSharpSyntaxDemo
             // playing with objects
             Console.WriteLine("Playing with objects");
 
-            Person p = new Person();
+            Person p = new();
 
             Person d = p;
 
@@ -202,7 +202,7 @@ namespace CSharpSyntaxDemo
             Console.WriteLine(p.Age);
             Console.WriteLine(d.Age);
 
-            StructPerson sp = new StructPerson();
+            StructPerson sp = new();
 
             StructPerson sd = sp;
 
@@ -213,7 +213,7 @@ namespace CSharpSyntaxDemo
             Console.WriteLine(sp.Age);
             Console.WriteLine(sd.Age);
 
-            StructPerson sp2 = new StructPerson("a", "b");
+            StructPerson sp2 = new("a", "b");
             Console.WriteLine(sp2.FirstName);
 
             Console.WriteLine(string.Join(",", WordsList));
@@ -409,14 +409,14 @@ namespace CSharpSyntaxDemo
             var selectWithLogic = (from w in Words where w.Contains("e") select w).ToList();
             WriteWords(selectWithLogic);
 
-            var selectWithCompoundedLogic = (from w in Words where w.Contains("e") && w.Length > 4 select w).ToList();
+            var selectWithCompoundedLogic = (from w in Words where w.Contains('e') && w.Length > 4 select w).ToList();
             WriteWords(selectWithCompoundedLogic);
 
-            var selectWithLogicAndOrderBy = (from w in Words where w.Contains("e") orderby w select w).ToList();
+            var selectWithLogicAndOrderBy = (from w in Words where w.Contains('e') orderby w select w).ToList();
             WriteWords(selectWithLogicAndOrderBy);
 
             // notice we are only selecting the Lenght property of the Words
-            var selectPropertiesOfTheObjectsBeingQueried = (from w in Words where w.Contains("e") && w.Length > 4 select w.Length).ToList();
+            var selectPropertiesOfTheObjectsBeingQueried = (from w in Words where w.Contains('e') && w.Length > 4 select w.Length).ToList();
             foreach (var result in selectPropertiesOfTheObjectsBeingQueried)
             {
                 Console.WriteLine(result);
@@ -453,13 +453,13 @@ namespace CSharpSyntaxDemo
             var simpleSelect = Words.ToList();
             WriteWords(simpleSelect);
 
-            var selectWithLogic = Words.Where(w => w.Contains("e")).ToList();
+            var selectWithLogic = Words.Where(w => w.Contains('e')).ToList();
             WriteWords(selectWithLogic);
 
-            var selectWithCompoundedLogic = Words.Where(w => w.Contains("e") && w.Length > 4).ToList();
+            var selectWithCompoundedLogic = Words.Where(w => w.Contains('e') && w.Length > 4).ToList();
             WriteWords(selectWithCompoundedLogic);
 
-            var selectWithLogicAndOrderBy = Words.Where(w => w.Contains("e")).OrderBy(w => w).ToList();
+            var selectWithLogicAndOrderBy = Words.Where(w => w.Contains('e')).OrderBy(w => w).ToList();
             WriteWords(selectWithLogicAndOrderBy);
 
 

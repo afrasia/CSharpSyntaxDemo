@@ -18,10 +18,7 @@ namespace CSharpSyntaxDemo
         /// </summary>
         public string FirstName
         {
-            get
-            {
-                return _firstName;
-            }
+            get => _firstName;
             set
             {
                 _firstName = value;

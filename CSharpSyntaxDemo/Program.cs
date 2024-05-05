@@ -9,12 +9,15 @@ namespace CSharpSyntaxDemo
         /// <summary>
         /// Property Example 1
         /// </summary>
-        public static string[] Words = new string[] { "This", "is", "a", "test", "of", "the", "emergency", "broadcast", "system." };
+        public static string[] Words = ["This", "is", "a", "test", "of", "the", "emergency", "broadcast", "system."];
+        public static string[] Words2 = new string[] { "This", "is", "a", "test", "of", "the", "emergency", "broadcast", "system." };
 
-        public static IList<string> WordsList = Words.ToList();
+        public static IList<string> WordsList = [.. Words];
+        public static IList<string> WordsList2 = Words.ToList();
 
 
-        public static object[] HeterogenousArray = new object[] { 1, "a" };
+        public static object[] HeterogenousArray = [1, "a"];
+        public static object[] HeterogenousArray2 = new object[] { 1, "a" };
 
         // const is always static
         private const double PI = 3.14D;
@@ -87,7 +90,7 @@ namespace CSharpSyntaxDemo
 
             foreach (var word in Words)
             {
-                if (word.Contains("e"))
+                if (word.Contains('e'))
                     Console.WriteLine(word);
             }
 
@@ -240,7 +243,7 @@ namespace CSharpSyntaxDemo
             PlayWithInt32(int32);
             Console.WriteLine(int32);
 
-            Int32 int32New = new Int32();
+            Int32 int32New = new();
             int32New = 32;
             Console.WriteLine(int32New);
             PlayWithInt32(int32New);
@@ -406,7 +409,7 @@ namespace CSharpSyntaxDemo
             var simpleSelect = (from w in Words select w).ToList();
             WriteWords(simpleSelect);
 
-            var selectWithLogic = (from w in Words where w.Contains("e") select w).ToList();
+            var selectWithLogic = (from w in Words where w.Contains('e') select w).ToList();
             WriteWords(selectWithLogic);
 
             var selectWithCompoundedLogic = (from w in Words where w.Contains('e') && w.Length > 4 select w).ToList();
